@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if ! which brew >/dev/null; then
+  echo installing brew…
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+if [ ! -f ~/brew-last-update.tmp ] || [ `stat -f "%Sm" -t "%Y%m%d" ~/brew-last-update.tmp` -ne `date +%Y%m%d` ]; then
+  echo brew update…
+  brew update
+  touch ~/brew-last-update.tmp
+fi
+
+if [ ! -d /opt/homebrew-cask/ ]; then
+  # install brew cask (see http://gillesfabio.github.io/homebrew-cask-homepage/)
+  # cask allows you to install GUI apps using brew
+  brew tap caskroom/cask
+  brew install brew-cask
+
+  # install alfred and tell him about cask apps
+  brew cask install alfred
+  brew cask alfred link
+fi

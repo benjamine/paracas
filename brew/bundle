@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+echo brew bundle...
+
+sh $MY_PATH/../brew/init
+
+# suppress all the "already installed" warnings/errors
+brew bundle 2>&1 | grep -iv already

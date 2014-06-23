@@ -1,0 +1,6 @@
+
+# apps
+cask install iterm2
+cask install google-chrome
+cask install virtualbox
+cask install vagrant

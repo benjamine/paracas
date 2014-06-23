@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+# install atom and packages
+
+MY_PATH="`dirname \"$0\"`"
+
+if ! which apm >/dev/null; then
+  sh $MY_PATH/../brew/init
+
+  echo installing atom...
+  brew cask install atom
+fi
+
+# install packages listed in AtomPackagesFile
+while read line; do
+  if [[ $line =~ ^[^#].+$ ]]; then
+    if [ ! -d ~/.atom/packages/$line ]; then
+      apm install --quiet $line
+    fi
+  fi
+done <$MY_PATH/AtomPackagesFile
