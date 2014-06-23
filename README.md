@@ -10,10 +10,16 @@ bootstraps your developer arsenal
 - [atom](http://atom.io/), with some fundamental packages (check /atom/AtomPackageFile)
 - [oh my zsh](http://ohmyz.sh/)
 
-Run with:
-
+First-time setup:
 ``` sh
-  sh init
+  # first-time setup
+  git clone https://github.com/benjamine/paracas.git
+  cd paracas
+  make
+```
+And to get updates:
+``` sh
+  git pull && make
 ```
 
-Note: the scripts are idempotent and "re-run efficient", so feel free to run this as often as desired.
+Note: scripts are idempotent and "re-run efficient", so feel free to run this as often as desired.
