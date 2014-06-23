@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+git config --global push.default current
+
+# settings for https://github.com/github/hub
+git config --global hub.protocol https
+
+set +e
+name=$(git config --global user.name)
+set -e
+if [ ! -n "$name" ]; then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    name=$(osascript -e "long user name of (system info)")
+    if [ -n "$name" ]; then
+      git config --global user.name "$name"
+      echo "  git user.name automatically set to \"$name\""
+      echo "  to change it use: git config --global user.name <value>"
+    fi
+  fi
+fi
+while [ ! -n "$name" ]; do
+  read -p "Git: display name? " name
+  if [ -n "$name" ]; then
+    git config --global user.name "$name"
+    echo "  git user.name set to \"$name\""
+    echo "  to change it use: git config --global user.name <value>"
+  fi
+done
+
+set +e
+email=$(git config --global user.email)
+set -e
+while [ ! -n "$email" ]; do
+  read -p "Git: email? " email
+  if [ -n "$email" ]; then
+    git config --global user.email "$email"
+    echo "  git user.email set to \"$email\""
+    echo "  to change it use: git config --global user.email <value>"
+  fi
+done

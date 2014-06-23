@@ -5,9 +5,9 @@ bootstraps your developer arsenal
 
 - if OSX:
   - [homebrew](http://brew.sh/) with [cask](http://caskroom.io/)
-  - fundamental OSX apps: alfred, iTerm2, etc. check /brew/Brewfile)
+  - fundamental OSX apps: alfred, iTerm2, etc. check [/brew/Brewfile](brew/Brewfile))
 - [ansible](http://www.ansible.com)
-- [atom](http://atom.io/), with some fundamental packages (check /atom/AtomPackageFile)
+- [atom](http://atom.io/), with some fundamental packages (check [/atom/AtomPackageFile](atom/AtomPackageFile))
 - [oh my zsh](http://ohmyz.sh/)
 
 First-time setup:

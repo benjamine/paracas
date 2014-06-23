@@ -1,0 +1,2 @@
+# prepend /usr/local/bin (puts brew over system builtin)
+export PATH=/usr/local/bin:$PATH

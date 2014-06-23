@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+MY_PATH="`dirname \"$0\"`"
+
+if ! which git >/dev/null; then
+  sh $MY_PATH/../brew/init
+
+  echo installing git...
+  brew install git
+  brew install hub
+fi
+
+if ! which hub >/dev/null; then
+  sh $MY_PATH/../brew/init
+
+  echo installing hub...
+  brew install hub
+fi
+
+sh $MY_PATH/config
+sh $MY_PATH/aliases

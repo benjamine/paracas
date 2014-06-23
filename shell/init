@@ -1,9 +1,17 @@
 #!/bin/bash
-
 set -e
+
+MY_PATH="`dirname \"$0\"`"
 
 if [ ! -f ~/.zshrc ]; then
   echo installing ohmyzsh…
   curl -L http://install.ohmyz.sh | sh
   echo zsh ready
+fi
+
+if ! grep -q 'zshrc-paracas-config' ~/.zshrc ; then
+  ABSOLUTE_PATH=$(cd $MY_PATH; pwd)
+  echo "\n\n# inserted by paracas (see https://github.com/benjamine/paracas)" >> ~/.zshrc
+  echo "source $ABSOLUTE_PATH/zshrc-paracas-config" >> ~/.zshrc
+  echo "~/.zshrc patched"
 fi
