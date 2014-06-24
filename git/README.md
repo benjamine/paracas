@@ -22,6 +22,9 @@ git feature rocket launcher
 
 # code!
 
+# git status
+git s
+
 # add all and commit
 git a
 git c adds a rocket launcher
@@ -41,4 +44,34 @@ git pr
 
 # if needed, add more commits to the pull request
 git push origin
+```
+
+Using shell aliases
+------------
+
+Using zsh aliases (```make shell```) you can shorten some of these:
+
+``` sh
+# clone & fork
+clone owner/reponame
+cd reponame
+fork
+
+# create/switch to feature branch
+feature rocket launcher
+
+# git status
+s
+
+# add all and commit
+git a && commit adds a rocket launcher
+
+# do a commit amend
+git a && amend [new commit message]
+
+pr [pull request title]
+pr
+
+# add more commits
+push
 ```
