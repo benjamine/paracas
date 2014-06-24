@@ -16,6 +16,9 @@ First-time setup:
   git clone https://github.com/benjamine/paracas.git
   cd paracas
   make
+
+  # or get only specific sections (check Makefile):
+  make git
 ```
 And to get updates:
 ``` sh
