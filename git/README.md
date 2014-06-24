@@ -17,6 +17,7 @@ git fork
 Adding a Feature
 ---------------
 ``` sh
+# switch (create if new) to branch feature/rocket-launcher (will fetch upstream and base the branch on upstream/master)
 git feature rocket launcher
 
 # code!
