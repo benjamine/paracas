@@ -1,9 +1,21 @@
 #!/bin/bash
 set -e
 
-echo brew bundle...
+if [[ ! "$OSTYPE" == "darwin"* ]]; then
+  exit
+fi
+
+# set homebrew cask options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+MY_PATH="`dirname \"$0\"`"
 
 sh $MY_PATH/../brew/init
 
-# suppress all the "already installed" warnings/errors
-brew bundle 2>&1 | grep -iv already
+BREWFILE="$*"
+if [ -z "$BREWFILE" ]; then
+  BREWFILE="$MY_PATH/Brewfile"
+fi
+
+# suppress all the "already ***ed" warnings/errors
+brew bundle "$BREWFILE" 2>&1 | sed -e '/[Aa]lready tapped/d' -e '/[Aa]lready installed/d' -e '/[Aa]lready linked/d'

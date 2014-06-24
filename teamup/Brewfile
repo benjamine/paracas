@@ -1,0 +1,4 @@
+
+# apps
+cask install skype
+cask install slack

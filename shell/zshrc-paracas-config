@@ -1,6 +1,8 @@
 
 # prepend /usr/local/bin (puts brew over system builtin)
 export PATH=/usr/local/bin:$PATH
+# set homebrew cask options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 # aliases for git/hub
 alias clone='hub clone'

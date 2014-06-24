@@ -1,6 +1,15 @@
 #!/bin/bash
 set -e
 
+MY_PATH="`dirname \"$0\"`"
+
+if [[ ! "$OSTYPE" == "darwin"* ]]; then
+  exit
+fi
+
+# set homebrew cask options
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 if ! which brew >/dev/null; then
   echo installing brew…
   ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
@@ -13,12 +22,5 @@ if [ ! -f ~/brew-last-update.tmp ] || [ `stat -f "%Sm" -t "%Y%m%d" ~/brew-last-u
 fi
 
 if [ ! -d /opt/homebrew-cask/ ]; then
-  # install brew cask (see http://gillesfabio.github.io/homebrew-cask-homepage/)
-  # cask allows you to install GUI apps using brew
-  brew tap caskroom/cask
-  brew install brew-cask
-
-  # install alfred and tell him about cask apps
-  brew cask install alfred
-  brew cask alfred link
+  brew bundle "$MY_PATH/cask/Brewfile" 2>&1 | sed -e '/[Aa]lready tapped/d' -e '/[Aa]lready installed/d' -e '/[Aa]lready linked/d'
 fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# install tools to work in teams
+
+MY_PATH="`dirname \"$0\"`"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  sh $MY_PATH/../brew/bundle $MY_PATH/Brewfile
+fi
