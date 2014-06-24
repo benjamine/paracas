@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+if [ ! -z $(git remote | grep upstream) ]; then
+  echo "upstream already exists" 1>&2;
+  return 1
+else
+  hub fork
+  git remote rename origin upstream
+  git remote rename $(git remote | grep -v upstream | head -1) origin
+  echo "\n\nfork complete:\n$(git remote -v)\n"
+fi

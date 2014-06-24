@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+title="$*"
+
+if [ -z "$title" ]; then
+  read -p "enter commit message: " title
+fi
+
+if [ -z "$title" ]; then
+  exit
+fi
+
+git commit -m "$title"

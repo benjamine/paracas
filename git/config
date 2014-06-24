@@ -5,6 +5,11 @@ git config --global push.default current
 # settings for https://github.com/github/hub
 git config --global hub.protocol https
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # use osxkeychain as credential cache
+  git config --global credential.helper osxkeychain
+fi
+
 set +e
 name=$(git config --global user.name)
 set -e

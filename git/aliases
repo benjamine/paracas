@@ -1,9 +1,18 @@
 #!/bin/bash
 set -e
 
+MY_PATH="`dirname \"$0\"`"
+ABSOLUTE_PATH=$(cd $MY_PATH; pwd)
+
 git config --global alias.s status
-git config --global alias.feature "!f() { git fetch upstream && git checkout -b feature/$1 upstream/master; }; f"
+git config --global alias.co checkout
 git config --global alias.a "!git add -u && git add . && git status"
-git config --global alias.c "commit -m"
+#git config --global alias.c "commit -m '\$*'"
 git config --global alias.amend "commit --amend"
-git config --global alias.up "!git fetch upstream && git rebase upstream/master"
+
+# set up scripts in commands folder as aliases
+for file in $MY_PATH/commands/*
+do
+  command=$(basename $file)
+  git config --global alias.$command "!sh $ABSOLUTE_PATH/commands/$command"
+done

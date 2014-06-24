@@ -1,2 +1,14 @@
+
 # prepend /usr/local/bin (puts brew over system builtin)
 export PATH=/usr/local/bin:$PATH
+
+# aliases for git/hub
+alias clone='hub clone'
+alias commit='git c'
+alias amend='git amend'
+alias s='git s'
+alias up='git up'
+alias pr='git pr'
+alias fork='git fork'
+alias feature='git feature'
+alias push='git push origin'

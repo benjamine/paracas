@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+title="$*"
+
+if [ -z "$title" ]; then
+  git commit --amend --no-edit
+  exit
+fi
+
+git commit --amend -m "$title"
