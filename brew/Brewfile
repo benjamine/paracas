@@ -4,4 +4,4 @@ cask install iterm2
 cask install alfred
 cask install google-chrome
 cask install virtualbox
-cask install vagrant
+cask install boot2docker

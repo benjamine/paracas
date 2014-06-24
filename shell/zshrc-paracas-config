@@ -14,3 +14,10 @@ alias pr='git pr'
 alias fork='git fork'
 alias feature='git feature'
 alias push='git push origin'
+
+# docker (using boot2docker)
+export DOCKER_HOST=tcp://localhost:2375
+alias docker-vm='boot2docker'
+alias docker-up='boot2docker init; boot2docker up'
+alias docker-down='boot2docker down'
+alias docker-update='boot2docker down; boot2docker download; boot2docker up'
