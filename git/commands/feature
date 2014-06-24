@@ -6,10 +6,12 @@ if [ -z $(git remote | grep upstream) ]; then
   git fork
 fi
 
-if [ ! -z "$(git branch --list feature/$1)" ]; then
-  git checkout feature/$1
+name=$(echo "$*" | sed 's/[^A-Za-z09]/-/g')
+
+if [ ! -z "$(git branch --list feature/$name)" ]; then
+  git checkout feature/$name
 else
-  echo "creating feature branch $1..."
+  echo "creating feature branch $name..."
   git fetch upstream
-  git checkout -b feature/$1 upstream/master
+  git checkout -b feature/$name upstream/master
 fi
