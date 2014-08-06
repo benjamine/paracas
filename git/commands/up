@@ -1,10 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ -z $(git remote | grep upstream) ]; then
-  git fetch origin
-  git rebase origin/master
-else
-  git fetch upstream
-  git rebase upstream/master
-fi
+name="$(git symbolic-ref --short -q HEAD)"
+remote="$(git config branch.$name.remote)"
+
+git fetch $remote
+git rebase
