@@ -9,9 +9,23 @@ if [ ! -f ~/.zshrc ]; then
   echo zsh ready
 fi
 
+ABSOLUTE_PATH=$(cd $MY_PATH; pwd)
 if ! grep -q 'zshrc-paracas-config' ~/.zshrc ; then
-  ABSOLUTE_PATH=$(cd $MY_PATH; pwd)
   echo "\n\n# inserted by paracas (see https://github.com/benjamine/paracas)" >> ~/.zshrc
   echo "source $ABSOLUTE_PATH/zshrc-paracas-config" >> ~/.zshrc
   echo "~/.zshrc patched"
+fi
+
+plugin_names="git"
+
+if ! grep -q "plugins=($plugin_names)" ~/.zshrc ; then
+  # oh-my-zsh plugins, check https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
+  sed -i.bak "s/^plugins=\(.*\)/plugins=($plugin_names)/" ~/.zshrc
+  echo "\n\n# oh-my-zsh plugins set by paracas (see https://github.com/benjamine/paracas)" >> ~/.zshrc
+  echo "~/.zshrc plugins set"
+fi
+
+if ! which explain.sh >/dev/null; then
+  # install explain.sh
+  curl -s https://benjamine.github.io/explain.sh/install.sh | sh
 fi

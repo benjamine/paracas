@@ -10,6 +10,8 @@ ansible:
 	@sh ./brew/init
 atom:
 	@sh ./atom/init
+shell:
+	@sh ./shell/init
 teamup:
 	@sh ./teamup/init
-.PHONY: default brew git ansible atom teamup keyremap
+.PHONY: default brew git ansible atom teamup shell keyremap
