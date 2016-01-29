@@ -4,6 +4,9 @@ export PATH=/usr/local/bin:$PATH
 # set homebrew cask options
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
+# common aliases
+
+
 # aliases for git/hub
 alias clone='hub clone'
 alias commit='git c'
@@ -13,6 +16,7 @@ alias up='git up'
 alias pr='git pr'
 alias fork='git fork'
 alias feature='git feature'
+alias hotfix='git hotfix'
 alias push='git push origin'
 alias pushf='git push -f origin'
 

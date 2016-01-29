@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+name=$(echo "$*" | sed 's/[^A-Za-z0-9]/-/g')
+
+if [ ! -z "$(git branch --list hotfix/$name)" ]; then
+  git checkout hotfix/$name
+else
+  git fetch upstream production
+  if [ ! -z "$(git branch -ar --list upstream/hotfix/$name)" ]; then
+    echo "found shared hotfix branch $name..."
+    git checkout -b hotfix/$name upstream/hotfix/$name
+  else
+    echo "creating hotfix branch $name..."
+    git checkout -b hotfix/$name upstream/production
+  fi
+fi

@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [ -z "$*" ]; then
+  cat ~/.zsh_history | tail -n 100
+else
+  cat ~/.zsh_history | egrep "$@" | tail -n 100;
+fi;
