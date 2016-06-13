@@ -56,6 +56,23 @@ git rebase --continue
 git push -f origin
 ```
 
+Hotfix
+------
+
+``` sh
+# switch (create if new) to branch hotfix/fuel-tank
+# (will fetch upstream and base the branch on upstream/production)
+git hotfix fuel tank
+
+# cherry pick one or more commits (IMPORTANT: always use commits already in master!)
+git cherry-pick <hash>
+
+# send a pull request (will base it on upstream/production)
+git pr
+
+# NOTE: never commit directly to a hotfix branch to avoid conflicts
+```
+
 Using shell aliases
 ------------
 

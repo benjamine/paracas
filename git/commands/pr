@@ -14,4 +14,11 @@ if [ -z "$title" ]; then
   title=$(git log -1 --pretty=%B)
 fi
 
-hub pull-request -m "$title"
+
+# obtain current branch base (merge target)
+name="$(git symbolic-ref --short -q HEAD)"
+remote="$(git config branch.$name.remote)"
+baseuser="$(git config remote.$remote.url | sed 's/.*\/\([^\/]*\)\/.*/\1/')"
+basebranch="$(git config branch.$name.merge)"
+
+hub pull-request -m "$title" -b $baseuser:$basebranch
