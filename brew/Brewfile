@@ -1,9 +1,6 @@
 
-cask install iterm2
-cask install alfred
+install httppie
+
 cask install github
 cask install google-chrome
-cask install virtualbox
-cask install vagrant
-cask install boot2docker
 cask install pgadmin3

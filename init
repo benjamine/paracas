@@ -7,7 +7,6 @@ MY_PATH="`dirname \"$0\"`"
 sh $MY_PATH/brew/init
 sh $MY_PATH/git/init
 sh $MY_PATH/shell/init
-sh $MY_PATH/ansible/init
 sh $MY_PATH/brew/bundle
 sh $MY_PATH/atom/init
 sh $MY_PATH/teamup/init

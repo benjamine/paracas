@@ -16,7 +16,7 @@ if ! grep -q 'zshrc-paracas-config' ~/.zshrc ; then
   echo "~/.zshrc patched"
 fi
 
-plugin_names="git brew atom colorize fasd"
+plugin_names="git brew docker npm fasd httpie"
 
 if ! grep -q "plugins=($plugin_names)" ~/.zshrc ; then
   # oh-my-zsh plugins, check https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
@@ -30,4 +30,5 @@ if ! which explain.sh >/dev/null; then
   curl -s https://benjamine.github.io/explain.sh/install.sh | sh
 fi
 
+brew install zsh-autosuggestions
 brew install fasd

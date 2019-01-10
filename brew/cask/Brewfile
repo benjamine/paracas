@@ -2,7 +2,3 @@
 # cask allows you to install GUI apps using brew
 tap caskroom/cask
 install brew-cask
-
-# install alfred and tell him about cask apps
-cask install alfred
-cask alfred link
