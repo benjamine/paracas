@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-if [ -z $(git remote | grep upstream) ]; then
-  echo "upstream not found, fork first" 1>&2;
-  return 1
-fi
-
 git push origin
 
 title="$*"
@@ -13,7 +8,6 @@ title="$*"
 if [ -z "$title" ]; then
   title=$(git log -1 --pretty=%B)
 fi
-
 
 # obtain current branch base (merge target)
 name="$(git symbolic-ref --short -q HEAD)"
